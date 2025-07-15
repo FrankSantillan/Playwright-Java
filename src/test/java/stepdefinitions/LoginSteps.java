@@ -15,7 +15,11 @@ public class LoginSteps {
     @Given("the user navigates to {string}")
     public void navigate_to_page(String url) {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        //browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
+        boolean isCI = Boolean.parseBoolean(System.getenv().getOrDefault("CI", "false"));
+        browser = playwright.chromium().launch(
+                new BrowserType.LaunchOptions().setHeadless(isCI)
+        );
         context = browser.newContext();
         page = context.newPage();
         page.navigate(url);
