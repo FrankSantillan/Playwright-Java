@@ -1,1 +1,1 @@
-# Selenium-Java
+# Playwright-Java
