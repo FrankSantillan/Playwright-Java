@@ -13,7 +13,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    CI: "true"
+    env: # ✅ Environment variables go here (inside the job)
+      CI: "true"
 
     steps:
       - name: Checkout
